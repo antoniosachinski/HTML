@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <title>Exercício</title>
+    <title>Horário</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <script type="module" src="script.js"></script>
   </head>
   <body>
     <header>
-      <h1>titulo</h1>
+      <h1>Hora do Dia</h1>
     </header>
     <section>
-      <div>testando</div>
-      <div></div>
+      <div id="msg">hora</div>
+      <div id="foto">
+        <img id="imagem" src="fotomanha.jpg" alt="foto da manhã" />
+      </div>
     </section>
     <footer>
-      <p>&copy: /antoniosachinski</p>
+      <p>&copy; antoniosachinski</p>
     </footer>
     <style>
-      body {
-        background: rgb(156, 156, 230);
+    img{
+        border-radius: 15px;
+    }
+    body {
+        background: white; 
         font-family: 'Lora', serif;
       }
       header {
         color: rgb(241, 226, 243);
         text-align: center;
       }
+      div{
+        text-align: center;
+        padding: 7px;
+    
+      }
       section {
         background: rgb(241, 226, 243);
-        border-radius: 10px;
+        border-radius: 15px;
         padding: 15px;
-        width: 500px;
+        width: 400px;
         margin: auto;
         box-shadow: 5px 5px 10px gray;
       }
@@ -40,8 +49,30 @@
         font-style: italic;
       }
     </style>
+
     <script>
-      alert('olá');
+      window.onload = carregar;
+      function carregar() {
+        var msg = document.getElementById('msg');
+        var imagem = document.getElementById('imagem');
+        hora = 7
+        //var data = new Date();
+        //var hora = data.getHours();
+        msg.innerHTML = `Agora são ${hora} horas.`;
+        if (hora >= 5 && hora < 12) {
+          imagem.src = 'fotomanha.jpg';
+          imagem.alt = 'Foto da manhã';
+          document.body.style.background = "#836e5d"
+        } else if (hora >= 12 && hora < 18) {
+          imagem.src = 'fototarde.jpg';
+          imagem.alt = 'Foto da tarde';
+           document.body.style.background = "#ba7643"
+        } else {
+          imagem.src = 'fotonoite.png';
+          imagem.alt = 'Foto da noite';
+           document.body.style.background = "#400d00"
+        }
+      }
     </script>
   </body>
 </html>
